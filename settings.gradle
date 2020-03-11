@@ -1,6 +1,6 @@
-rootProject.name = 'easy-beasy'
+rootProject.name = 'template-de-projeto'
 
 include(
-    'webservice',
-    'webapp'
+        "frontend",
+        "backend"
 )

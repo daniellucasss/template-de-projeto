@@ -6,20 +6,20 @@ idea {
     }
 }
 
-task clean(dependsOn: [':webapp:clean', ':webservice:clean'], type: Delete) {
+task clean(dependsOn: [':frontend:clean', ':backend:clean'], type: Delete) {
     delete project.buildDir
 }
 
 task buildForProduction(
     dependsOn: [
         clean,
-        ':webapp:buildForProduction',
-        ':webservice:build'
+        ':frontend:buildForProduction',
+        ':backend:build'
     ]
 )
 
 task copyProductionArtifact(type: Copy) {
-    from "${project(':webservice').buildDir}"
+    from "${project(':backend').buildDir}"
 
     into project.buildDir
 }
