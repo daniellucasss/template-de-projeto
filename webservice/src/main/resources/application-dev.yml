@@ -1,7 +1,0 @@
-spring:
-  flyway:
-    locations: classpath:/db/migrations,classpath:/db/seeders
-  datasource:
-    url: jdbc:postgresql://localhost:5432/easybeasy
-    username: postgres
-    password: 123456
