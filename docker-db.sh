@@ -6,17 +6,25 @@ POSTGRES_USER=postgres
 DATABASE=template_aceleradora
 
 case $1 in
-  run-deprecated)
-    docker run --rm --name ${CONTAINER_NAME} -p 5432:5432 -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD} -d ${POSTGRES_USER}
+  run-volatile)
+    docker run \
+      --rm \
+      --name ${CONTAINER_NAME} \
+      --publish 5432:5432 \
+      --env POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
+      --detach \
+      ${POSTGRES_USER}
   ;;
-  run) #
-    mkdir -p ~/.pgsql/${CONTAINER_NAME}; docker run \
+  run-persistent)
+    mkdir -p ~/.pgsql/${CONTAINER_NAME}
+    docker run \
+      --rm \
       --name ${CONTAINER_NAME} \
       --volume ~/.pgsql/${CONTAINER_NAME}:/var/lib/postgresql/data \
       --publish 5432:5432 \
       --env POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
       --detach \
-      ${POSTGRES_USER};
+      ${POSTGRES_USER}
   ;;
 
   create)
@@ -27,11 +35,16 @@ case $1 in
     docker exec -it ${CONTAINER_NAME} psql -U ${POSTGRES_USER} -d ${POSTGRES_PASSWORD}
   ;;
 
+  stop)
+    docker stop ${CONTAINER_NAME}
+  ;;
+
   *)
     echo "Opcoes: "
-    echo -e "\t - run-deprecated: Inicia container com volume de dados volatil (dados sao perdidos quando o container para)"
-    echo -e "\t - run: Inicia container com volume de dados persistente"
+    echo -e "\t - run-volatile: Inicia container com volume de dados volatil (dados sao perdidos quando o container para)"
+    echo -e "\t - run-persistent: Inicia container com volume de dados persistente"
     echo -e "\t - create: Cria banco de dados dentro do container"
     echo -e "\t - console: Abre cliente postgres conectado ao container"
+    echo -e "\t - stop: Para execucao do container"
   ;;
 esac
