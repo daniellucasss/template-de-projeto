@@ -5,10 +5,11 @@ import java.util.Base64;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 public final class Encoding {
+
     private static final Base64.Encoder ENCODER = Base64.getEncoder();
 
-    private String original;
-    private String encoded;
+    private final String original;
+    private final String encoded;
 
     private Encoding(String original, String encoded) {
         this.original = original;
@@ -21,7 +22,6 @@ public final class Encoding {
                 ENCODER.encodeToString(value.getBytes(UTF_8))
         );
     }
-
 
     public String getOriginal() {
         return original;
