@@ -3,7 +3,7 @@
 CONTAINER_NAME=template-aceleradora-db
 POSTGRES_PASSWORD=123456
 POSTGRES_USER=postgres
-DATABASE=template-aceleradora
+DATABASE=template_aceleradora
 
 case $1 in
   run-deprecated)
