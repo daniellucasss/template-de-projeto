@@ -9,7 +9,7 @@ const Link = ({ children, ...props }) => (
 );
 
 Link.propTypes = {
-  children: oneOfType([element, string]),
+  children: oneOfType([element, string]).isRequired,
   className: string,
   href: string.isRequired,
   target: string.isRequired,
