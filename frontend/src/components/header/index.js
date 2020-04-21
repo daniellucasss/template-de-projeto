@@ -10,16 +10,15 @@ const linkProps = {
   className: 'App-link'
 };
 
-const Header = ({ title, className }) => (
-  <header className={className}>
+const Header = ({ title }) => (
+  <header className="App-header">
     {title}
     <Link {...linkProps}>Learn React</Link>
   </header>
 );
 
 Header.propTypes = {
-  title: string.isRequired,
-  className: string.isRequired
+  title: string.isRequired
 };
 
 export default Header;

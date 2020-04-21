@@ -9,14 +9,13 @@ function App() {
     encoded: 'Nothing to encode'
   });
 
+  const headerProps = {
+    title: 'Template Aceleradora'
+  };
+
   const encodeAndSet = async (value) => {
     const result = await encodingService.encode(value);
     setEncoding(result);
-  };
-
-  const headerProps = {
-    title: 'Template Aceleradora',
-    className: 'App-header'
   };
 
   return (
