@@ -13,11 +13,14 @@ describe('Header', () => {
   });
 
   test('Should renders component with warning when there is no title', () => {
+    const message = 'Failed prop type: The prop `title` is marked as required';
+    const regex = new RegExp(`(.*?)${message}(.*?)`);
     const consoleError = jest.spyOn(console, 'error');
     const headerProps = {};
     const { container } = render(<Header {...headerProps} />);
-    expect(consoleError).toHaveBeenCalled();
+    expect(consoleError).toHaveBeenCalledWith(expect.stringMatching(regex));
     expect(container).toMatchSnapshot();
+    consoleError.mockRestore();
   });
 
 
