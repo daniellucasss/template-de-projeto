@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header has className 1`] = `
+<header
+  class="fake-class"
+>
+  fake-title
+  <a
+    class="App-link"
+    href="https://reactjs.org"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    Learn React
+  </a>
+</header>
+`;
