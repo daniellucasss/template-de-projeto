@@ -22,17 +22,11 @@ task lint(type: YarnTask) {
     args = ['lint']
 }
 
-task buildForProduction(dependsOn: [yarnInstall, clean], type: YarnTask) {
+task build(type: YarnTask, dependsOn: [yarnInstall, clean]) {
     args = ['build']
 }
 
-task buildForDevelopment(type: YarnTask) {
-    inputs.dir("$projectDir/src")
-    inputs.dir("$projectDir/public")
-    inputs.file("$projectDir/package.json")
-
-    outputs.dir buildDir
-
-    args = ['build']
+task start(type: YarnTask, dependsOn: [yarnInstall]) {
+    args = ['start']
 }
 
