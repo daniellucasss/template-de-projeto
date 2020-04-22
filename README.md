@@ -11,6 +11,49 @@ desenvolvimento. Para saber mais sobre as decisões tomadas na construção dess
 
 ## Tecnologias
 
-  - Java 12
-  - Vue.js
+  - Java 11
+  - Node
+  - React
   - PostgreSQL
+
+## Executando o projeto
+
+### Garanta acesso ao banco de dados
+
+Antes de executar o backend, garanta que o Postgres esteja rodando na máquina e que exista um banco de dados 
+chamado `template_aceleradora`. Localmente, o backend tentará se conectar ao banco usando usuário `postgres` e senha 
+`123456`. Talvez seja necessário alterar a senha do usuáro `postgres` para que projeto possa executar corretamente
+
+Para isso, execute:
+
+```sql
+ALTER USER postgres WITH PASSWORD '123456';
+```
+
+Também é possível executar o banco de dados com Docker. Execute o script `docker-db.sh` para mais instruções:
+
+```shell script
+./docker-db.sh
+```
+
+### Inicie o backend
+
+Em um terminal, execute o comando:
+
+```shell script
+./gradlew bootrun
+```
+
+Este comando iniciará a execução do backend do projeto. Perceba que ele continuará executando até ser parado manualmente,
+O que pode ser feito pressionando as teclas <kbd>ctrl</kbd> + <kbd>c</kbd>.
+
+### Inicie o frontend
+
+Em uma outra janela de terminal, execute o comando:
+
+```shell script
+./gradlew start
+```
+
+Assim como o backend, este comando seguirá executando até ser parado manualmente. Ele também atualizará o front-end a 
+cada mudança feita no código, portanto, não é necessário executá-lo novamente para ver as mudanças aplicadas.
