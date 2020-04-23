@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Header from './components/header';
-import encodingService from './encoding-service';
+import encodingService from './services/encoding-service';
 
 function App() {
   const [encoding, setEncoding] = useState({
