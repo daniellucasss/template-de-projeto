@@ -22,6 +22,4 @@ describe('Header', () => {
     expect(container).toMatchSnapshot();
     consoleError.mockRestore();
   });
-
-
 });

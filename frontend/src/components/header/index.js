@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, element } from 'prop-types';
+import { string } from 'prop-types';
 import './header.scss';
 import Link from '../link';
 
