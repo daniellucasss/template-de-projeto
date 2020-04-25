@@ -5,9 +5,7 @@ plugins {
 buildDir = "$projectDir/build"
 
 node {
-    version = '12.13.0'
-    yarnVersion = '1.19.1'
-    download = true
+    download = false
 }
 
 task clean(type: Delete) {
@@ -25,8 +23,3 @@ task lint(type: YarnTask) {
 task build(type: YarnTask, dependsOn: [yarnInstall, clean]) {
     args = ['build']
 }
-
-task start(type: YarnTask, dependsOn: [yarnInstall]) {
-    args = ['start']
-}
-
