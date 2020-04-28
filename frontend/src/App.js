@@ -1,34 +1,27 @@
 import React, { useState } from 'react';
+import {
+  Switch,
+  Route,
+} from "react-router-dom";
 import './App.css';
 import Header from './components/header';
-import encodingService from './services/encoding-service';
+import Encode from './modules/encode';
 
 function App() {
-  const [encoding, setEncoding] = useState({
-    original: '',
-    encoded: 'Nothing to encode'
-  });
-
   const headerProps = {
     title: 'Template Aceleradora'
   };
-
-  const encodeAndSet = async (value) => {
-    const result = await encodingService.encode(value);
-    setEncoding(result);
-  };
-
   return (
     <div className="App">
       <Header {...headerProps} />
 
       <main className="App-content">
-        <p> {encoding.original} </p>
-        <p> {encoding.encoded} </p>
-        <input type="text" onChange={(event) => encodeAndSet(event.target.value)} />
+        <Switch>
+          <Route path="/" component={Encode} exact />
+          <Route component={Encode} />
+        </Switch>
       </main>
     </div>
   );
 }
-
 export default App;
