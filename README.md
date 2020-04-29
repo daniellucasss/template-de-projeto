@@ -11,10 +11,22 @@ desenvolvimento. Para saber mais sobre as decisões tomadas na construção dess
 
 ## Tecnologias
 
-  - Java 11
-  - Node
+  - [Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+  - [Node 12.16.2 LTS](https://nodejs.org/en/download/)
   - React
-  - PostgreSQL
+  - [Postgres 12](https://www.postgresql.org/download/)
+  - [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
+
+
+###  Ferramentas recomendadas (não obrigatórias)
+
+Algumas recomendações de ferramentas para trabalhar com este template. Embora recomendadas, elas *não são obrigatórias*
+para o funcionamento do projeto:
+
+  - [Docker](https://www.docker.com/get-started)
+  - [Postman](https://www.postman.com/downloads/)
+  - [Visual Studio Code](https://code.visualstudio.com/download)
+  - [Tmux](https://github.com/tmux/tmux/wiki)
 
 ## Executando o projeto
 
@@ -49,10 +61,21 @@ O que pode ser feito pressionando as teclas <kbd>ctrl</kbd> + <kbd>c</kbd>.
 
 ### Inicie o frontend
 
-Em uma outra janela de terminal, execute o comando:
+Abra uma nova janela de terminal, já que o backend estará bloqueando a primeira janela.
+
+É necessário executar `yarn install` caso seja a primeira vez que você esteja executando o projeto no computador, ou quando uma nova
+biblioteca for adicionada ao projeto (`yarn add`):
+
+```shell
+cd frontend
+yarn install
+```
+
+Com as dependências instaladas, execute o comando:
 
 ```shell script
-./gradlew start
+# Voce precisa estar dentro da pasta frontend
+yarn start;
 ```
 
 Assim como o backend, este comando seguirá executando até ser parado manualmente. Ele também atualizará o front-end a 

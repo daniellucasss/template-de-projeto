@@ -1,9 +1,10 @@
 #!/bin/bash
 
-CONTAINER_NAME=template-aceleradora-db
-POSTGRES_PASSWORD=123456
-POSTGRES_USER=postgres
-DATABASE=template_aceleradora
+readonly CONTAINER_NAME=template-aceleradora-db
+readonly POSTGRES_USER=postgres
+readonly POSTGRES_PASSWORD=123456
+readonly POSTGRES_IMAGE="postgres:12"
+readonly DATABASE_NAME=template_aceleradora
 
 case $1 in
   run-volatile)
@@ -13,7 +14,7 @@ case $1 in
       --publish 5432:5432 \
       --env POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
       --detach \
-      ${POSTGRES_USER}
+      ${POSTGRES_IMAGE}
   ;;
   run-persistent)
     mkdir -p ~/.pgsql/${CONTAINER_NAME}
@@ -24,11 +25,11 @@ case $1 in
       --publish 5432:5432 \
       --env POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
       --detach \
-      ${POSTGRES_USER}
+      ${POSTGRES_IMAGE}
   ;;
 
   create)
-    docker exec -it ${CONTAINER_NAME} psql -U ${POSTGRES_USER} -c "CREATE DATABASE ${DATABASE}"
+    docker exec -it ${CONTAINER_NAME} psql -U ${POSTGRES_USER} -c "CREATE DATABASE ${DATABASE_NAME}"
   ;;
 
   console)
